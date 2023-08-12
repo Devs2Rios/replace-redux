@@ -3,19 +3,20 @@ import { ProductContext } from '../store/ProductsContext';
 import FavoriteItem from '../components/Favorites/FavoriteItem';
 import './Products.css';
 
-const Favorites = props => {
+const Favorites = () => {
   const { products } = useContext(ProductContext),
-    favoriteProducts = products.filter(p => p.isFavorite);
+    favoriteProducts = products.filter(p => p.isFav);
+
   let content = <p className="placeholder">Got no favorites yet!</p>;
   if (favoriteProducts.length > 0) {
     content = (
       <ul className="products-list">
-        {favoriteProducts.map(prod => (
+        {favoriteProducts.map(p => (
           <FavoriteItem
-            key={prod.id}
-            id={prod.id}
-            title={prod.title}
-            description={prod.description}
+            key={p.id}
+            id={p.id}
+            title={p.title}
+            description={p.description}
           />
         ))}
       </ul>

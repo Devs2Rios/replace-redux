@@ -4,8 +4,7 @@ import Card from '../UI/Card';
 import './ProductItem.css';
 
 const ProductItem = ({ id, title, description, isFav }) => {
-  const { toggleFav } = useContext(ProductContext),
-    toggleFavHandler = () => toggleFav(id);
+  const { toggleFav } = useContext(ProductContext);
 
   return (
     <Card style={{ marginBottom: '1rem' }}>
@@ -14,7 +13,7 @@ const ProductItem = ({ id, title, description, isFav }) => {
         <p>{description}</p>
         <button
           className={!isFav ? 'button-outline' : ''}
-          onClick={toggleFavHandler}
+          onClick={() => toggleFav(id)}
         >
           {isFav ? 'Un-Favorite' : 'Favorite'}
         </button>

@@ -3,17 +3,17 @@ import { ProductContext } from '../store/ProductsContext';
 import ProductItem from '../components/Products/ProductItem';
 import './Products.css';
 
-const Products = props => {
+const Products = () => {
   const { products } = useContext(ProductContext);
   return (
     <ul className="products-list">
-      {products.map(prod => (
+      {products.map(p => (
         <ProductItem
-          key={prod.id}
-          id={prod.id}
-          title={prod.title}
-          description={prod.description}
-          isFav={prod.isFavorite}
+          key={p.id}
+          id={p.id}
+          title={p.title}
+          description={p.description}
+          isFav={p.isFav}
         />
       ))}
     </ul>
