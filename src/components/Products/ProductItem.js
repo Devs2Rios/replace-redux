@@ -4,7 +4,6 @@ import Card from '../UI/Card';
 import './ProductItem.css';
 
 const ProductItem = memo(({ id, title, description, isFav }) => {
-  console.log('Rendering');
   const dispatch = useStore(false)[1],
     toggleFav = () => dispatch('TOGGLE_FAV', id);
 

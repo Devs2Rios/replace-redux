@@ -1,10 +1,12 @@
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { configureStore } from './store/products-store';
+import { configureStore as configureProductsStore } from './store/products-store';
+import { configureStore as configureCounterStore } from './store/counter-store';
 import './index.css';
 import App from './App';
 
-configureStore();
+configureProductsStore();
+configureCounterStore();
 
 const root = createRoot(document.getElementById('root'));
 
