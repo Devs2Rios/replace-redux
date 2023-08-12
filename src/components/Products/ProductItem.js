@@ -1,10 +1,12 @@
-import { useContext } from 'react';
-import { ProductContext } from '../../store/ProductsContext';
+import { memo } from 'react';
+import { useStore } from '../../store/store';
 import Card from '../UI/Card';
 import './ProductItem.css';
 
-const ProductItem = ({ id, title, description, isFav }) => {
-  const { toggleFav } = useContext(ProductContext);
+const ProductItem = memo(({ id, title, description, isFav }) => {
+  console.log('Rendering');
+  const dispatch = useStore(false)[1],
+    toggleFav = () => dispatch('TOGGLE_FAV', id);
 
   return (
     <Card style={{ marginBottom: '1rem' }}>
@@ -13,13 +15,13 @@ const ProductItem = ({ id, title, description, isFav }) => {
         <p>{description}</p>
         <button
           className={!isFav ? 'button-outline' : ''}
-          onClick={() => toggleFav(id)}
+          onClick={toggleFav}
         >
           {isFav ? 'Un-Favorite' : 'Favorite'}
         </button>
       </div>
     </Card>
   );
-};
+});
 
 export default ProductItem;

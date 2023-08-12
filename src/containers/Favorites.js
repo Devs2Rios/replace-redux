@@ -1,10 +1,9 @@
-import { useContext } from 'react';
-import { ProductContext } from '../store/ProductsContext';
+import { useStore } from '../store/store';
 import FavoriteItem from '../components/Favorites/FavoriteItem';
 import './Products.css';
 
 const Favorites = () => {
-  const { products } = useContext(ProductContext),
+  const { products } = useStore()[0],
     favoriteProducts = products.filter(p => p.isFav);
 
   let content = <p className="placeholder">Got no favorites yet!</p>;
